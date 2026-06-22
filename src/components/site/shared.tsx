@@ -55,11 +55,7 @@ export function Navbar() {
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-2">
-          <Logo className="h-12 w-auto" />
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-display font-bold text-foreground tracking-tight">Altivox</span>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Health Solution LLC</span>
-          </span>
+          <Logo className="h-10 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
           {nav.map((n) => (
