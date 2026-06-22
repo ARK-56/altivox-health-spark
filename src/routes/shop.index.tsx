@@ -75,7 +75,7 @@ function ShopPage() {
                   <h3 className="font-display text-xl font-semibold text-ink leading-snug">{p.name}</h3>
                   <p className="text-sm text-muted-foreground flex-1">{p.blurb}</p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-display text-2xl font-semibold text-primary">${p.price}</span>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground">HCPCS {p.hcpcs}{p.rxRequired ? " · Rx" : ""}</span>
                     <span className="inline-flex items-center gap-1 text-xs font-medium text-primary">
                       View details <ArrowUpRight className="h-3.5 w-3.5" />
                     </span>
