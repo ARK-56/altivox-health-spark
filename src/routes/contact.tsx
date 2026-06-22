@@ -31,8 +31,8 @@ function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5 space-y-6">
             {[
-              { icon: Phone, t: "Call us", v: "(555) 014-2200", sub: "Mon–Sat · 8am–8pm ET", href: "tel:+15550142200" },
-              { icon: Mail, t: "Email us", v: "hello@altivoxhealth.com", sub: "We reply within 24 hours", href: "mailto:hello@altivoxhealth.com" },
+              { icon: Phone, t: "Call us", v: "+1 929 253 0627", sub: "Mon–Sat · 8am–8pm ET", href: "tel:+19292530627" },
+              { icon: Mail, t: "Email us", v: "altivoxhs@gmail.com", sub: "We reply within 24 hours", href: "mailto:altivoxhs@gmail.com" },
               { icon: MapPin, t: "Headquarters", v: "1200 Care Boulevard, Suite 400", sub: "Wilmington, DE 19801, USA" },
               { icon: Clock, t: "Concierge hours", v: "7 days a week", sub: "8am–8pm ET (urgent line 24/7)" },
             ].map((c) => {
@@ -72,7 +72,7 @@ function ContactPage() {
                   <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground grid place-items-center"><Check className="h-5 w-5" /></div>
                   <div>
                     <div className="font-display text-lg font-semibold text-ink">Thanks — we've got it.</div>
-                    <p className="text-sm text-muted-foreground mt-1">A coordinator will be in touch within 24 hours. For urgent questions, call (555) 014-2200.</p>
+                    <p className="text-sm text-muted-foreground mt-1">A coordinator will be in touch within 24 hours. For urgent questions, call +1 929 253 0627.</p>
                   </div>
                 </div>
               ) : (
