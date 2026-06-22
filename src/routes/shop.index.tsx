@@ -4,7 +4,7 @@ import { Star, ArrowUpRight, SlidersHorizontal } from "lucide-react";
 import { SiteShell, PageHero, Eyebrow } from "@/components/site/shared";
 import { products } from "@/components/site/data";
 
-export const Route = createFileRoute("/shop")({
+export const Route = createFileRoute("/shop/")({
   head: () => ({
     meta: [
       { title: "Shop Home Medical Equipment — Altivox Health Solution" },
