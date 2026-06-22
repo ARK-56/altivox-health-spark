@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { SiteShell, PageHero, Eyebrow } from "@/components/site/shared";
 import { blogs } from "@/components/site/data";
 
-export const Route = createFileRoute("/blogs")({
+export const Route = createFileRoute("/blogs/")({
   head: () => ({
     meta: [
       { title: "Insights & Articles — Altivox Health Solution" },

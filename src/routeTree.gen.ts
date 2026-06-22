@@ -9,27 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShopIndexRouteImport } from './routes/shop.index'
+import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
 import { Route as ShopIdRouteImport } from './routes/shop.$id'
 import { Route as BlogsSlugRouteImport } from './routes/blogs.$slug'
 
-const ShopRoute = ShopRouteImport.update({
-  id: '/shop',
-  path: '/shop',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogsRoute = BlogsRouteImport.update({
-  id: '/blogs',
-  path: '/blogs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -42,104 +32,102 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/shop/',
+  path: '/shop/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogsIndexRoute = BlogsIndexRouteImport.update({
+  id: '/blogs/',
+  path: '/blogs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopIdRoute = ShopIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => ShopRoute,
+  id: '/shop/$id',
+  path: '/shop/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsSlugRoute = BlogsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => BlogsRoute,
+  id: '/blogs/$slug',
+  path: '/blogs/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blogs': typeof BlogsRouteWithChildren
   '/contact': typeof ContactRoute
-  '/shop': typeof ShopRouteWithChildren
   '/blogs/$slug': typeof BlogsSlugRoute
   '/shop/$id': typeof ShopIdRoute
+  '/blogs/': typeof BlogsIndexRoute
+  '/shop/': typeof ShopIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blogs': typeof BlogsRouteWithChildren
   '/contact': typeof ContactRoute
-  '/shop': typeof ShopRouteWithChildren
   '/blogs/$slug': typeof BlogsSlugRoute
   '/shop/$id': typeof ShopIdRoute
+  '/blogs': typeof BlogsIndexRoute
+  '/shop': typeof ShopIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blogs': typeof BlogsRouteWithChildren
   '/contact': typeof ContactRoute
-  '/shop': typeof ShopRouteWithChildren
   '/blogs/$slug': typeof BlogsSlugRoute
   '/shop/$id': typeof ShopIdRoute
+  '/blogs/': typeof BlogsIndexRoute
+  '/shop/': typeof ShopIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
-    | '/blogs'
     | '/contact'
-    | '/shop'
     | '/blogs/$slug'
     | '/shop/$id'
+    | '/blogs/'
+    | '/shop/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/blogs'
     | '/contact'
-    | '/shop'
     | '/blogs/$slug'
     | '/shop/$id'
+    | '/blogs'
+    | '/shop'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/blogs'
     | '/contact'
-    | '/shop'
     | '/blogs/$slug'
     | '/shop/$id'
+    | '/blogs/'
+    | '/shop/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  BlogsRoute: typeof BlogsRouteWithChildren
   ContactRoute: typeof ContactRoute
-  ShopRoute: typeof ShopRouteWithChildren
+  BlogsSlugRoute: typeof BlogsSlugRoute
+  ShopIdRoute: typeof ShopIdRoute
+  BlogsIndexRoute: typeof BlogsIndexRoute
+  ShopIndexRoute: typeof ShopIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/shop': {
-      id: '/shop'
-      path: '/shop'
-      fullPath: '/shop'
-      preLoaderRoute: typeof ShopRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blogs': {
-      id: '/blogs'
-      path: '/blogs'
-      fullPath: '/blogs'
-      preLoaderRoute: typeof BlogsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -156,60 +144,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/': {
+      id: '/shop/'
+      path: '/shop'
+      fullPath: '/shop/'
+      preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogs/': {
+      id: '/blogs/'
+      path: '/blogs'
+      fullPath: '/blogs/'
+      preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/$id': {
       id: '/shop/$id'
-      path: '/$id'
+      path: '/shop/$id'
       fullPath: '/shop/$id'
       preLoaderRoute: typeof ShopIdRouteImport
-      parentRoute: typeof ShopRoute
+      parentRoute: typeof rootRouteImport
     }
     '/blogs/$slug': {
       id: '/blogs/$slug'
-      path: '/$slug'
+      path: '/blogs/$slug'
       fullPath: '/blogs/$slug'
       preLoaderRoute: typeof BlogsSlugRouteImport
-      parentRoute: typeof BlogsRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface BlogsRouteChildren {
-  BlogsSlugRoute: typeof BlogsSlugRoute
-}
-
-const BlogsRouteChildren: BlogsRouteChildren = {
-  BlogsSlugRoute: BlogsSlugRoute,
-}
-
-const BlogsRouteWithChildren = BlogsRoute._addFileChildren(BlogsRouteChildren)
-
-interface ShopRouteChildren {
-  ShopIdRoute: typeof ShopIdRoute
-}
-
-const ShopRouteChildren: ShopRouteChildren = {
-  ShopIdRoute: ShopIdRoute,
-}
-
-const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  BlogsRoute: BlogsRouteWithChildren,
   ContactRoute: ContactRoute,
-  ShopRoute: ShopRouteWithChildren,
+  BlogsSlugRoute: BlogsSlugRoute,
+  ShopIdRoute: ShopIdRoute,
+  BlogsIndexRoute: BlogsIndexRoute,
+  ShopIndexRoute: ShopIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
