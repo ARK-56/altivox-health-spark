@@ -208,7 +208,7 @@ function Products() {
           <PillButton variant="ghost" to="/shop">View All Products</PillButton>
         </div>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((p) => (
+          {products.slice(0, 4).map((p) => (
             <Link to="/shop/$id" params={{ id: p.id }} key={p.id} className="group rounded-3xl bg-card border border-border overflow-hidden flex flex-col">
               <div className="relative aspect-square bg-surface-strong">
                 <img src={p.img} alt={p.name} loading="lazy" width={800} height={800} className="h-full w-full object-cover transition-transform group-hover:scale-105" />
@@ -221,7 +221,7 @@ function Products() {
                 </div>
                 <h3 className="font-display text-lg font-semibold text-ink leading-snug">{p.name}</h3>
                 <div className="mt-auto flex items-center justify-between">
-                  <span className="font-display text-xl font-semibold text-primary">${p.price}</span>
+                  <span className="text-xs uppercase tracking-widest text-muted-foreground">HCPCS {p.hcpcs}</span>
                   <span className="text-xs font-medium px-4 py-2 rounded-full bg-primary text-primary-foreground">View</span>
                 </div>
               </div>

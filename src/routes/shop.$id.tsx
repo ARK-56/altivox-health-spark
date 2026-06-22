@@ -80,9 +80,12 @@ function ProductDetail() {
             </div>
             <p className="mt-6 text-muted-foreground">{product.blurb}</p>
 
-            <div className="mt-8 flex items-baseline gap-3">
-              <span className="font-display text-5xl font-semibold text-primary">${product.price}</span>
-              <span className="text-sm text-muted-foreground">or covered by Medicare Part B</span>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest">HCPCS {product.hcpcs}</span>
+              {product.rxRequired && (
+                <span className="inline-flex items-center px-3 py-1.5 rounded-full border border-border text-xs font-semibold uppercase tracking-widest text-muted-foreground">Rx Required</span>
+              )}
+              <span className="text-sm text-muted-foreground">Covered by Medicare Part B</span>
             </div>
 
             <ul className="mt-8 space-y-2">
@@ -168,7 +171,7 @@ function ProductDetail() {
                 <div className="p-5 flex flex-col gap-2">
                   <h3 className="font-display text-lg font-semibold text-ink">{p.name}</h3>
                   <div className="flex items-center justify-between">
-                    <span className="font-display text-lg font-semibold text-primary">${p.price}</span>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground">HCPCS {p.hcpcs}</span>
                     <span className="inline-flex items-center gap-1 text-xs text-primary">View <ArrowUpRight className="h-3 w-3" /></span>
                   </div>
                 </div>
