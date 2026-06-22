@@ -1,32 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  ArrowUpRight,
-  ShieldCheck,
-  Truck,
-  HeartPulse,
-  Activity,
-  Bed,
-  Phone,
-  Mail,
-  MapPin,
-  Star,
-  Check,
-  Plus,
-  Minus,
-  Clock,
-  Sparkles,
-  Stethoscope,
+  ArrowUpRight, ShieldCheck, Truck, HeartPulse, Activity, Bed, Phone, Star,
+  Check, Plus, Minus, Clock, Stethoscope,
 } from "lucide-react";
-import logo from "@/assets/altivox-logo.png.asset.json";
 import heroImg from "@/assets/hero-care.jpg";
-import productWheelchair from "@/assets/product-wheelchair.jpg";
-import productMonitor from "@/assets/product-monitor.jpg";
-import productBed from "@/assets/product-bed.jpg";
-import productOxygen from "@/assets/product-oxygen.jpg";
 import t1 from "@/assets/testimonial-1.jpg";
 import t2 from "@/assets/testimonial-2.jpg";
 import t3 from "@/assets/testimonial-3.jpg";
+import { SiteShell, PillButton, Eyebrow } from "@/components/site/shared";
+import { products, blogs } from "@/components/site/data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,66 +23,9 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-function Logo({ className = "h-10" }: { className?: string }) {
-  return <img src={logo.url} alt="Altivox Health Solution" className={className} />;
-}
-
-function PillButton({
-  children,
-  variant = "primary",
-  href = "#contact",
-}: { children: React.ReactNode; variant?: "primary" | "ghost"; href?: string }) {
-  const base = "inline-flex items-center gap-2 rounded-full pl-6 pr-2 py-2 text-sm font-medium transition-all group";
-  const styles = variant === "primary"
-    ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[var(--shadow-card)]"
-    : "border border-border bg-card text-foreground hover:bg-surface";
-  return (
-    <a href={href} className={`${base} ${styles}`}>
-      {children}
-      <span className="ml-1 grid h-9 w-9 place-items-center rounded-full bg-primary-foreground text-primary group-hover:rotate-45 transition-transform">
-        <ArrowUpRight className="h-4 w-4" />
-      </span>
-    </a>
-  );
-}
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-      <Sparkles className="h-3 w-3 text-primary" />
-      {children}
-    </div>
-  );
-}
-
-function Navbar() {
-  return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/75 border-b border-border/60">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
-        <a href="#" className="flex items-center gap-2">
-          <Logo className="h-12 w-auto" />
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-display font-bold text-foreground tracking-tight">Altivox</span>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Health Solution LLC</span>
-          </span>
-        </a>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
-          <a href="#home" className="hover:text-primary">Home</a>
-          <a href="#about" className="hover:text-primary">About</a>
-          <a href="#shop" className="hover:text-primary">Shop</a>
-          <a href="#process" className="hover:text-primary">Process</a>
-          <a href="#faq" className="hover:text-primary">FAQ</a>
-          <a href="#contact" className="hover:text-primary">Contact</a>
-        </nav>
-        <PillButton href="#contact">Verify Insurance</PillButton>
-      </div>
-    </header>
-  );
-}
-
 function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden">
+    <section className="relative overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroImg} alt="Caregiver holding a patient's hand" className="h-full w-full object-cover" width={1920} height={1280} />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/20" />
@@ -121,10 +47,10 @@ function Hero() {
             Altivox Health Solution delivers premium mobility equipment, self-care devices and medical support — coordinated with your insurance and shipped directly to your door.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <PillButton href="#shop">Order Products Now</PillButton>
-            <a href="#about" className="text-sm font-medium text-foreground/80 hover:text-primary inline-flex items-center gap-2">
+            <PillButton to="/shop">Order Products Now</PillButton>
+            <Link to="/about" className="text-sm font-medium text-foreground/80 hover:text-primary inline-flex items-center gap-2">
               Learn how it works <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
           <div className="mt-14 grid sm:grid-cols-3 gap-4 max-w-xl">
             {[
@@ -168,7 +94,7 @@ function About() {
     { icon: Activity, title: "Outcomes First", body: "Follow-up check-ins to make sure your gear is improving daily life." },
   ];
   return (
-    <section id="about" className="py-24 lg:py-32">
+    <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-7">
@@ -181,9 +107,9 @@ function About() {
             <p className="text-muted-foreground text-base lg:text-lg">
               Our mission is to make life-improving medical equipment more accessible, more affordable, and more aligned with the way you actually live.
             </p>
-            <a href="#shop" className="mt-6 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+            <Link to="/about" className="mt-6 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
               View more about us <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="mt-16 grid md:grid-cols-3 gap-6">
@@ -216,7 +142,7 @@ function Categories() {
             <Eyebrow>Our range of categories</Eyebrow>
             <h2 className="mt-4 font-display text-4xl sm:text-5xl font-semibold text-ink max-w-2xl leading-tight">Three pillars of in-home medical care.</h2>
           </div>
-          <PillButton variant="ghost" href="#shop">Browse Catalog</PillButton>
+          <PillButton variant="ghost" to="/shop">Browse Catalog</PillButton>
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {cats.map((c) => (
@@ -226,9 +152,9 @@ function Categories() {
               </div>
               <h3 className="mt-6 font-display text-2xl font-semibold text-ink">{c.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground flex-1">{c.body}</p>
-              <a href="#shop" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary">
+              <Link to="/shop" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary">
                 Order products now <ArrowUpRight className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
           ))}
         </div>
@@ -247,7 +173,7 @@ function Process() {
     { t: "Progress that grows with you", d: "Adjust equipment and protocols as your needs evolve over weeks and years." },
   ];
   return (
-    <section id="process" className="py-24 lg:py-32">
+    <section className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Eyebrow>Our process</Eyebrow>
         <h2 className="mt-4 font-display text-4xl sm:text-5xl font-semibold text-ink max-w-3xl leading-tight">
@@ -271,29 +197,19 @@ function Process() {
 }
 
 function Products() {
-  const products = [
-    { img: productWheelchair, name: "Premium Lightweight Wheelchair", price: 489, rating: 4.8, tag: "Mobility" },
-    { img: productMonitor, name: "Digital Blood Pressure Monitor", price: 89, rating: 4.9, tag: "Self-Care" },
-    { img: productBed, name: "Adjustable Home Care Bed", price: 1290, rating: 4.7, tag: "Support" },
-    { img: productOxygen, name: "Portable Oxygen Concentrator", price: 1450, rating: 4.9, tag: "Support" },
-  ];
   return (
-    <section id="shop" className="bg-surface py-24 lg:py-32">
+    <section className="bg-surface py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
             <Eyebrow>Our featured products</Eyebrow>
             <h2 className="mt-4 font-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">Equipment. Devices. Support.</h2>
           </div>
-          <div className="flex gap-2 text-xs">
-            {["All", "Equipment", "Devices", "Supports"].map((t, i) => (
-              <span key={t} className={`px-4 py-2 rounded-full border ${i === 0 ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground"}`}>{t}</span>
-            ))}
-          </div>
+          <PillButton variant="ghost" to="/shop">View All Products</PillButton>
         </div>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((p) => (
-            <div key={p.name} className="group rounded-3xl bg-card border border-border overflow-hidden flex flex-col">
+            <Link to="/shop/$id" params={{ id: p.id }} key={p.id} className="group rounded-3xl bg-card border border-border overflow-hidden flex flex-col">
               <div className="relative aspect-square bg-surface-strong">
                 <img src={p.img} alt={p.name} loading="lazy" width={800} height={800} className="h-full w-full object-cover transition-transform group-hover:scale-105" />
                 <span className="absolute top-4 left-4 text-[10px] uppercase tracking-widest bg-card/90 backdrop-blur px-3 py-1 rounded-full border border-border">{p.tag}</span>
@@ -306,10 +222,10 @@ function Products() {
                 <h3 className="font-display text-lg font-semibold text-ink leading-snug">{p.name}</h3>
                 <div className="mt-auto flex items-center justify-between">
                   <span className="font-display text-xl font-semibold text-primary">${p.price}</span>
-                  <button className="text-xs font-medium px-4 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">Add to cart</button>
+                  <span className="text-xs font-medium px-4 py-2 rounded-full bg-primary text-primary-foreground">View</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -331,7 +247,7 @@ function Testimonials() {
             <Eyebrow>What clients say</Eyebrow>
             <h2 className="mt-4 font-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">Real stories from the families we serve.</h2>
             <p className="mt-5 text-muted-foreground">We measure success by the quiet weeks afterward — when the equipment works, the paperwork is handled, and life simply continues.</p>
-            <div className="mt-8"><PillButton href="#contact">Talk to Our Team</PillButton></div>
+            <div className="mt-8"><PillButton to="/contact">Talk to Our Team</PillButton></div>
           </div>
           <div className="lg:col-span-7 grid gap-5">
             {items.map((it) => (
@@ -365,7 +281,7 @@ function Faq() {
   ];
   const [open, setOpen] = useState(0);
   return (
-    <section id="faq" className="bg-surface py-24 lg:py-32">
+    <section className="bg-surface py-24 lg:py-32">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <Eyebrow>Answers to your questions</Eyebrow>
@@ -395,9 +311,40 @@ function Faq() {
   );
 }
 
+function BlogPreview() {
+  return (
+    <section className="py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <Eyebrow>Our blogs & insights</Eyebrow>
+            <h2 className="mt-4 font-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">Practical reading for patients and caregivers.</h2>
+          </div>
+          <PillButton variant="ghost" to="/blogs">View All Blogs</PillButton>
+        </div>
+        <div className="mt-14 grid md:grid-cols-3 gap-6">
+          {blogs.slice(0, 3).map((b) => (
+            <Link to="/blogs/$slug" params={{ slug: b.slug }} key={b.slug} className="group rounded-3xl border border-border bg-card p-6 flex flex-col hover:shadow-[var(--shadow-elegant)] transition-shadow">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">{b.category}</span>
+                <span>{b.read}</span>
+              </div>
+              <h3 className="mt-5 font-display text-xl font-semibold text-ink leading-snug flex-1 group-hover:text-primary transition-colors">{b.title}</h3>
+              <div className="mt-6 flex items-center justify-between text-xs text-muted-foreground">
+                <span>{b.date}</span>
+                <ArrowUpRight className="h-4 w-4 text-primary group-hover:rotate-45 transition-transform" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTA() {
   return (
-    <section id="contact" className="py-24 lg:py-32">
+    <section className="py-24 lg:py-32 bg-surface">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[2.5rem] p-10 sm:p-16 lg:p-20 text-primary-foreground" style={{ background: "var(--gradient-primary)" }}>
           <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full bg-primary-foreground/10 blur-3xl" />
@@ -408,12 +355,7 @@ function CTA() {
               <h2 className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05]">You're in the right place.</h2>
               <p className="mt-6 max-w-xl text-primary-foreground/85">Tell us what you need. We'll verify your insurance, coordinate the prescription, and have equipment at your door — usually within the week.</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="mailto:hello@altivoxhealth.com" className="inline-flex items-center gap-2 rounded-full bg-card text-foreground pl-6 pr-2 py-2 text-sm font-medium group">
-                  Verify Your Insurance
-                  <span className="ml-1 grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground group-hover:rotate-45 transition-transform">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </a>
+                <PillButton to="/contact">Verify Your Insurance</PillButton>
                 <a href="tel:+15550142200" className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/90 hover:text-primary-foreground px-4 py-3">
                   <Phone className="h-4 w-4" /> Call (555) 014-2200
                 </a>
@@ -440,78 +382,19 @@ function CTA() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="border-t border-border bg-card">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-12 gap-10">
-          <div className="md:col-span-5">
-            <Logo className="h-16 w-auto" />
-            <p className="mt-4 text-sm text-muted-foreground max-w-sm">Altivox Health Solution LLC — premium home medical equipment, coordinated with care.</p>
-            <div className="mt-6 space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Serving the United States</div>
-              <div className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> (555) 014-2200</div>
-              <div className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> hello@altivoxhealth.com</div>
-            </div>
-          </div>
-          <div className="md:col-span-2">
-            <div className="text-xs uppercase tracking-widest text-foreground font-semibold">Shop</div>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li><a href="#shop" className="hover:text-primary">Mobility</a></li>
-              <li><a href="#shop" className="hover:text-primary">Self-Care</a></li>
-              <li><a href="#shop" className="hover:text-primary">Support</a></li>
-              <li><a href="#shop" className="hover:text-primary">Oxygen</a></li>
-            </ul>
-          </div>
-          <div className="md:col-span-2">
-            <div className="text-xs uppercase tracking-widest text-foreground font-semibold">Company</div>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li><a href="#about" className="hover:text-primary">About</a></li>
-              <li><a href="#process" className="hover:text-primary">Process</a></li>
-              <li><a href="#faq" className="hover:text-primary">FAQ</a></li>
-              <li><a href="#contact" className="hover:text-primary">Contact</a></li>
-            </ul>
-          </div>
-          <div className="md:col-span-3">
-            <div className="text-xs uppercase tracking-widest text-foreground font-semibold">Newsletter</div>
-            <p className="mt-4 text-sm text-muted-foreground">Tips on home care, equipment and insurance — once a month.</p>
-            <form className="mt-4 flex items-center rounded-full border border-border bg-background overflow-hidden">
-              <input className="flex-1 bg-transparent px-4 py-3 text-sm outline-none" placeholder="you@email.com" />
-              <button className="m-1 grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground">
-                <ArrowUpRight className="h-4 w-4" />
-              </button>
-            </form>
-          </div>
-        </div>
-        <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Altivox Health Solution LLC. All rights reserved.</div>
-          <div className="flex gap-5">
-            <a href="#" className="hover:text-primary">Privacy</a>
-            <a href="#" className="hover:text-primary">Terms</a>
-            <a href="#" className="hover:text-primary">HIPAA</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 function Home() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <main>
-        <Hero />
-        <Marquee />
-        <About />
-        <Categories />
-        <Products />
-        <Process />
-        <Testimonials />
-        <Faq />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <SiteShell>
+      <Hero />
+      <Marquee />
+      <About />
+      <Categories />
+      <Products />
+      <Process />
+      <Testimonials />
+      <Faq />
+      <BlogPreview />
+      <CTA />
+    </SiteShell>
   );
 }
