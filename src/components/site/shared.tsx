@@ -92,8 +92,8 @@ export function Footer() {
             </p>
             <div className="mt-6 space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Serving the United States</div>
-              <div className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> (555) 014-2200</div>
-              <div className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> hello@altivoxhealth.com</div>
+              <div className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> +1 929 253 0627</div>
+              <div className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> altivoxhs@gmail.com</div>
             </div>
           </div>
           <div className="md:col-span-2">

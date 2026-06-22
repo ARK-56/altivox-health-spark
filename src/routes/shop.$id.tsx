@@ -115,8 +115,8 @@ function ProductDetail() {
               ))}
             </div>
 
-            <a href="tel:+15550142200" className="mt-8 inline-flex items-center gap-2 text-sm text-primary font-medium">
-              <Phone className="h-4 w-4" /> Questions? Call (555) 014-2200
+            <a href="tel:+19292530627" className="mt-8 inline-flex items-center gap-2 text-sm text-primary font-medium">
+              <Phone className="h-4 w-4" /> Questions? Call +1 929 253 0627
             </a>
           </div>
         </div>

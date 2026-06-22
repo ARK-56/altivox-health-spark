@@ -356,8 +356,8 @@ function CTA() {
               <p className="mt-6 max-w-xl text-primary-foreground/85">Tell us what you need. We'll verify your insurance, coordinate the prescription, and have equipment at your door — usually within the week.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <PillButton to="/contact">Verify Your Insurance</PillButton>
-                <a href="tel:+15550142200" className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/90 hover:text-primary-foreground px-4 py-3">
-                  <Phone className="h-4 w-4" /> Call (555) 014-2200
+                <a href="tel:+19292530627" className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/90 hover:text-primary-foreground px-4 py-3">
+                  <Phone className="h-4 w-4" /> Call +1 929 253 0627
                 </a>
               </div>
             </div>
