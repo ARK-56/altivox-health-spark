@@ -122,6 +122,39 @@ function ProductDetail() {
         </div>
       </section>
 
+      <section className="py-16 lg:py-20 border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-12">
+          <div className="lg:col-span-2">
+            <Eyebrow>Overview</Eyebrow>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-ink">About this product</h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed">{product.description}</p>
+
+            <h3 className="mt-10 font-display text-2xl font-semibold text-ink">Specifications</h3>
+            <dl className="mt-5 divide-y divide-border border-y border-border">
+              {product.specs.map((s) => (
+                <div key={s.label} className="grid grid-cols-3 py-3 text-sm">
+                  <dt className="text-muted-foreground">{s.label}</dt>
+                  <dd className="col-span-2 text-foreground">{s.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <h3 className="mt-10 font-display text-2xl font-semibold text-ink">In the box</h3>
+            <ul className="mt-5 grid sm:grid-cols-2 gap-2">
+              {product.inTheBox.map((i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-foreground"><Check className="h-4 w-4 text-primary mt-0.5" /> {i}</li>
+              ))}
+            </ul>
+          </div>
+
+          <aside className="rounded-3xl border border-border bg-surface p-7 h-fit sticky top-24">
+            <Eyebrow>Insurance & coverage</Eyebrow>
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{product.insurance}</p>
+            <div className="mt-6"><PillButton to="/contact">Verify my coverage</PillButton></div>
+          </aside>
+        </div>
+      </section>
+
       <section className="bg-surface py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Eyebrow>You may also like</Eyebrow>

@@ -54,43 +54,32 @@ function BlogDetail() {
             <span className="px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-xs">{post.category}</span>
             <span className="inline-flex items-center gap-1.5"><Calendar className="h-4 w-4" /> {post.date}</span>
             <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> {post.read} read</span>
+            <span>By {post.author}</span>
           </div>
         </div>
       </section>
 
       <article className="py-16 lg:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 prose-content">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <p className="text-xl text-foreground/90 leading-relaxed">{post.excerpt}</p>
 
-          <h2 className="mt-12 font-display text-2xl sm:text-3xl font-semibold text-ink">Why this matters</h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Whether you're a first-time caregiver or a clinician coordinating a discharge plan, the gap between &ldquo;what's prescribed&rdquo; and &ldquo;what arrives at the door&rdquo; is where most home recoveries lose momentum. We wrote this guide to close that gap with practical, jargon-free steps you can take this week.
-          </p>
-
-          <h2 className="mt-10 font-display text-2xl sm:text-3xl font-semibold text-ink">What we'll cover</h2>
-          <ul className="mt-4 space-y-3 text-muted-foreground">
-            <li className="flex gap-3"><span className="text-primary mt-1">•</span><span>The decisions that have the biggest downstream impact on outcomes.</span></li>
-            <li className="flex gap-3"><span className="text-primary mt-1">•</span><span>Common pitfalls that cost families weeks and how to avoid them.</span></li>
-            <li className="flex gap-3"><span className="text-primary mt-1">•</span><span>Specific language to use with insurance representatives.</span></li>
-            <li className="flex gap-3"><span className="text-primary mt-1">•</span><span>When to escalate to a clinical coordinator instead of going it alone.</span></li>
-          </ul>
-
-          <h2 className="mt-10 font-display text-2xl sm:text-3xl font-semibold text-ink">Step 1 — Get the right paperwork in motion</h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            The single fastest way to compress your timeline is to ensure the prescription, diagnosis code, and letter of medical necessity are submitted together. Missing one of these is the most common reason we see delays — and it's the easiest to fix before the first call to your insurer.
-          </p>
-
-          <h2 className="mt-10 font-display text-2xl sm:text-3xl font-semibold text-ink">Step 2 — Match the equipment to the home, not the catalog</h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Doorway widths, stair count, bathroom layout, and whether the patient lives alone all shape what equipment is actually usable. A spec sheet is a starting point; a quick walkthrough — even via video — saves returns later.
-          </p>
-
-          <h2 className="mt-10 font-display text-2xl sm:text-3xl font-semibold text-ink">Step 3 — Plan the first 30 days</h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Equipment is only half the recovery. Schedule a check-in at day 3, day 14, and day 30 — either with your physical therapist or your Altivox concierge — to make sure the gear is being used correctly and is still the right fit.
-          </p>
+          {post.sections.map((s) => (
+            <div key={s.heading}>
+              <h2 className="mt-10 font-display text-2xl sm:text-3xl font-semibold text-ink">{s.heading}</h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{s.body}</p>
+            </div>
+          ))}
 
           <div className="mt-12 rounded-3xl border border-border bg-surface p-8">
+            <Eyebrow>Key takeaways</Eyebrow>
+            <ul className="mt-4 space-y-3">
+              {post.takeaways.map((t) => (
+                <li key={t} className="flex gap-3 text-foreground"><span className="text-primary mt-1">•</span><span>{t}</span></li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-border bg-card p-8">
             <Eyebrow>Need a hand?</Eyebrow>
             <h3 className="mt-3 font-display text-2xl font-semibold text-ink">Talk to a real human about your situation.</h3>
             <p className="mt-2 text-muted-foreground">Our coordinators are available 7 days a week and can usually verify insurance the same day.</p>

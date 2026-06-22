@@ -74,7 +74,7 @@ export function Navbar() {
             </Link>
           ))}
         </nav>
-        <PillButton to="/contact">Verify Insurance</PillButton>
+        <PillButton to="/contact">Get in Touch</PillButton>
       </div>
     </header>
   );
