@@ -23,49 +23,48 @@ export const Route = createFileRoute("/")({
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs text-foreground/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Welcome to Altivox Health Solution
-            </div>
-            <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.02] text-ink">
-              Medical Equipment{" "}
-              <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                For Your Needs
-              </span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground">
-              Premium durable medical equipment delivered with care. From wheelchairs to respiratory devices, we provide FDA-certified products with professional guidance.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <PillButton to="/shop">Browse Equipment</PillButton>
-              <a href="#how-it-works" className="text-sm font-medium text-foreground/80 hover:text-primary inline-flex items-center gap-2">
-                How It Works <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </div>
-            <div className="mt-10 grid grid-cols-3 gap-4 max-w-lg">
-              {[
-                { icon: BadgeCheck, t: "FDA Certified" },
-                { icon: ShieldCheck, t: "HIPAA Compliant" },
-                { icon: Truck, t: "Free Shipping $100+" },
-              ].map((b) => (
-                <div key={b.t} className="rounded-2xl border border-border bg-card p-3 flex items-center gap-2">
-                  <b.icon className="h-4 w-4 text-primary flex-shrink-0" />
-                  <span className="text-xs font-medium text-foreground">{b.t}</span>
-                </div>
-              ))}
-            </div>
+      <div className="absolute inset-0">
+        <img src={heroImg} alt="Premium medical equipment in a clinical setting" className="h-full w-full object-cover" width={1920} height={1280} />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-28 lg:pt-32 lg:pb-40">
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-4 py-1.5 text-xs text-foreground/80 backdrop-blur">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Welcome to Altivox Health Solution
           </div>
-          <div className="lg:col-span-6 relative">
-            <div className="relative rounded-[2rem] overflow-hidden border border-border shadow-[var(--shadow-elegant)]">
-              <img src={heroImg} alt="Premium medical equipment in a clinical setting" className="w-full h-full object-cover aspect-[4/3]" width={1280} height={960} />
-            </div>
-            <div className="absolute -bottom-6 -left-6 rounded-2xl bg-card border border-border p-5 shadow-[var(--shadow-card)]">
-              <div className="font-display text-3xl font-semibold text-primary">260k+</div>
-              <div className="text-xs text-muted-foreground mt-1 uppercase tracking-widest">Satisfied Patients</div>
-            </div>
+          <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.02] text-ink">
+            Medical Equipment{" "}
+            <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+              For Your Needs
+            </span>
+          </h1>
+          <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground">
+            Premium durable medical equipment delivered with care. From wheelchairs to respiratory devices, we provide FDA-certified products with professional guidance.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <PillButton to="/shop">Browse Equipment</PillButton>
+            <a href="#how-it-works" className="text-sm font-medium text-foreground/80 hover:text-primary inline-flex items-center gap-2">
+              How It Works <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="mt-14 grid sm:grid-cols-3 gap-4 max-w-xl">
+            {[
+              { icon: BadgeCheck, t: "FDA Certified", d: "Products meet FDA classification standards." },
+              { icon: ShieldCheck, t: "HIPAA Compliant", d: "End-to-end encrypted intake & records." },
+              { icon: Truck, t: "Free Shipping $100+", d: "Tracked delivery nationwide." },
+            ].map((f) => (
+              <div key={f.t} className="rounded-2xl border border-border bg-card/80 backdrop-blur p-4">
+                <f.icon className="h-5 w-5 text-primary" />
+                <div className="mt-3 text-sm font-semibold text-foreground">{f.t}</div>
+                <div className="text-xs text-muted-foreground mt-1">{f.d}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 inline-flex items-center gap-3 rounded-2xl border border-border bg-card/80 backdrop-blur px-5 py-3">
+            <div className="font-display text-2xl font-semibold text-primary">260k+</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-widest">Satisfied Patients</div>
           </div>
         </div>
       </div>
