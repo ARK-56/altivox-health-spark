@@ -17,6 +17,37 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: String(formData.get("name") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      phone: String(formData.get("phone") ?? ""),
+      insurance: String(formData.get("insurance") ?? ""),
+      reason: String(formData.get("reason") ?? ""),
+      message: String(formData.get("message") ?? ""),
+    };
+    try {
+      const res = await fetch("/api/public/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Submit failed");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please call +1 929 253 0627 or try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
 
   return (
     <SiteShell>
