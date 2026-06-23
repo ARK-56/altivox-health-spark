@@ -108,7 +108,7 @@ function ContactPage() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                  onSubmit={handleSubmit}
                   className="mt-8 space-y-5"
                 >
                   <div className="grid sm:grid-cols-2 gap-5">
@@ -121,7 +121,7 @@ function ContactPage() {
                   </div>
                   <div>
                     <label className="text-sm font-medium text-foreground">I'm reaching out about</label>
-                    <select className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary">
+                    <select name="reason" className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary">
                       <option>Verifying insurance coverage</option>
                       <option>Placing a new order</option>
                       <option>Returning or swapping equipment</option>
@@ -132,18 +132,30 @@ function ContactPage() {
                   <div>
                     <label className="text-sm font-medium text-foreground">Message</label>
                     <textarea
+                      name="message"
                       rows={5}
                       required
                       placeholder="Share any details — diagnosis, equipment requested, timeline."
                       className="mt-2 w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary resize-none"
                     />
                   </div>
+                  {error && (
+                    <div className="rounded-2xl bg-destructive/10 border border-destructive/30 text-destructive text-sm px-4 py-3">
+                      {error}
+                    </div>
+                  )}
                   <div className="flex items-center justify-between flex-wrap gap-4 pt-2">
                     <label className="flex items-start gap-2 text-xs text-muted-foreground max-w-md">
                       <input type="checkbox" required className="mt-1 accent-[oklch(0.32_0.18_273)]" />
                       I consent to Altivox processing the information above to coordinate care. We never sell or share patient data.
                     </label>
-                    <PillButton href="#">Submit Request</PillButton>
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60 transition-all shadow-[var(--shadow-card)]"
+                    >
+                      {submitting ? "Sending…" : "Submit Request"}
+                    </button>
                   </div>
                 </form>
               )}
