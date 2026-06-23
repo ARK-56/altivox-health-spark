@@ -87,7 +87,7 @@ export function Footer() {
               Altivox Health Solution LLC — premium home medical equipment, coordinated with care.
             </p>
             <div className="mt-6 space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Serving the United States</div>
+              <div className="flex items-start gap-2"><MapPin className="h-4 w-4 text-primary mt-0.5" /> <span>971 US Highway 202 N, 8184<br />Branchburg, NJ 08876</span></div>
               <div className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> +1 929 253 0627</div>
               <div className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> altivoxhs@gmail.com</div>
             </div>
