@@ -33,7 +33,7 @@ function ContactPage() {
             {[
               { icon: Phone, t: "Call us", v: "+1 929 253 0627", sub: "Mon–Sat · 8am–8pm ET", href: "tel:+19292530627" },
               { icon: Mail, t: "Email us", v: "altivoxhs@gmail.com", sub: "We reply within 24 hours", href: "mailto:altivoxhs@gmail.com" },
-              { icon: MapPin, t: "Headquarters", v: "1200 Care Boulevard, Suite 400", sub: "Wilmington, DE 19801, USA" },
+              { icon: MapPin, t: "Headquarters", v: "971 US Highway 202 N, 8184", sub: "Branchburg, NJ 08876, USA" },
               { icon: Clock, t: "Concierge hours", v: "7 days a week", sub: "8am–8pm ET (urgent line 24/7)" },
             ].map((c) => {
               const Wrapper: React.ElementType = c.href ? "a" : "div";
