@@ -33,7 +33,7 @@ function ContactPage() {
             {[
               { icon: Phone, t: "Call us", v: "+1 929 253 0627", sub: "Mon–Sat · 8am–8pm ET", href: "tel:+19292530627" },
               { icon: Mail, t: "Email us", v: "altivoxhs@gmail.com", sub: "We reply within 24 hours", href: "mailto:altivoxhs@gmail.com" },
-              { icon: MapPin, t: "Headquarters", v: "1200 Care Boulevard, Suite 400", sub: "Wilmington, DE 19801, USA" },
+              { icon: MapPin, t: "Headquarters", v: "971 US Highway 202 N, 8184", sub: "Branchburg, NJ 08876, USA" },
               { icon: Clock, t: "Concierge hours", v: "7 days a week", sub: "8am–8pm ET (urgent line 24/7)" },
             ].map((c) => {
               const Wrapper: React.ElementType = c.href ? "a" : "div";
@@ -124,12 +124,12 @@ function ContactPage() {
       <section className="bg-surface py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Eyebrow>Where to find us</Eyebrow>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">Headquartered in Delaware. Serving the entire U.S.</h2>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">Headquartered in New Jersey. Serving the entire U.S.</h2>
           <div className="mt-10 rounded-3xl overflow-hidden border border-border h-80 sm:h-96 grid place-items-center" style={{ background: "var(--gradient-soft)" }}>
             <div className="text-center">
               <MapPin className="h-10 w-10 text-primary mx-auto" />
-              <div className="mt-4 font-display text-xl font-semibold text-ink">1200 Care Boulevard, Suite 400</div>
-              <div className="text-muted-foreground text-sm mt-1">Wilmington, DE 19801</div>
+              <div className="mt-4 font-display text-xl font-semibold text-ink">971 US Highway 202 N, 8184</div>
+              <div className="text-muted-foreground text-sm mt-1">Branchburg, NJ 08876</div>
             </div>
           </div>
         </div>
